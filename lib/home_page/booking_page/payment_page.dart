@@ -135,15 +135,136 @@ class _PaymentPageState extends State<PaymentPage> {
                           style: TextStyle(color: Colors.white, fontSize: 16))
                     ],
                   ),
-                  TextField(
-                    // enabled: false,
-                    decoration: InputDecoration(
-                      // enabled: false,
-                      border: OutlineInputBorder(),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Container(
+                    height: 50,
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: TextField(
+                            style: TextStyle(
+                              color:
+                                  Colors.white, // Đặt màu chữ thành màu trắng
+                            ),
+                            // enabled: false,
+                            decoration: InputDecoration(
+                                prefixStyle: TextStyle(color: Colors.white),
+                                // enabled: false,
+                                border: OutlineInputBorder(),
+                                labelText: "coupon"),
+                          ),
+                        ),
+                        ElevatedButton(
+                            style: ButtonStyle(
+                                minimumSize: WidgetStatePropertyAll(
+                                  Size(50.0, 54.0),
+                                ),
+                                shape: WidgetStatePropertyAll(
+                                  RoundedRectangleBorder(
+                                    borderRadius:
+                                        BorderRadius.circular(5.0), // Bo góc
+                                  ),
+                                ),
+                                backgroundColor: WidgetStatePropertyAll(
+                                    Colors.amber.shade400)),
+                            onPressed: () {},
+                            child: Text(
+                              "Apply",
+                              style: TextStyle(color: Colors.black),
+                            ))
+                      ],
                     ),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "Total",
+                        style: TextStyle(color: Colors.white, fontSize: 20),
+                      ),
+                      Text(
+                        "189.000 VND",
+                        style: TextStyle(
+                            color: Colors.amber.shade400,
+                            fontSize: 25,
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ],
                   ),
                 ],
               ),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Text(
+              "Payment Method",
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Expanded(
+                child: ListView.separated(
+                    itemBuilder: (context, index) => Container(
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 20, vertical: 10),
+                          decoration: BoxDecoration(
+                              color: Color(0xff1c1c1c),
+                              borderRadius: BorderRadius.circular(10)),
+                          child: Row(
+                            children: [
+                              Icon(
+                                Icons.money,
+                                size: 35,
+                                color: Colors.white,
+                              ),
+                              SizedBox(
+                                width: 30,
+                              ),
+                              Text(
+                                "Cash",
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 20),
+                              )
+                            ],
+                          ),
+                        ),
+                    separatorBuilder: (context, index) => SizedBox(
+                          height: 10,
+                        ),
+                    itemCount: 3)),
+            SizedBox(
+              height: 10,
+            ),
+            Container(
+              // margin: EdgeInsets.symmetric(horizontal: 20),
+              width: double.infinity,
+              decoration: BoxDecoration(),
+              child: ElevatedButton(
+                  style: ButtonStyle(
+                    backgroundColor:
+                        MaterialStatePropertyAll(Colors.amber.shade400),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 12),
+                    child: Text(
+                      "Continue",
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  onPressed: () {}),
             )
           ],
         ),
