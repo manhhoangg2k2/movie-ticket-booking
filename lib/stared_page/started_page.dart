@@ -246,31 +246,29 @@ class _StartedPageState extends State<StartedPage> {
                   ),
                   SizedBox(
                     width: double.infinity,
-                    child: Expanded(
-                      child: ElevatedButton(
-                          style: ButtonStyle(
-                            side: MaterialStatePropertyAll(
-                                BorderSide(color: Colors.white)),
-                            backgroundColor:
-                                MaterialStatePropertyAll(Colors.black),
-                            padding: MaterialStateProperty.all<EdgeInsets>(
-                              EdgeInsets.all(
-                                  20), // Thay đổi giá trị padding ở đây
-                            ),
+                    child: ElevatedButton(
+                        style: ButtonStyle(
+                          side: MaterialStatePropertyAll(
+                              BorderSide(color: Colors.white)),
+                          backgroundColor:
+                              MaterialStatePropertyAll(Colors.black),
+                          padding: MaterialStateProperty.all<EdgeInsets>(
+                            EdgeInsets.all(
+                                20), // Thay đổi giá trị padding ở đây
                           ),
-                          onPressed: () => Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => SignUpPage()),
-                              ),
-                          child: Text(
-                            "Sign up",
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold),
-                          )),
-                    ),
+                        ),
+                        onPressed: () => Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => SignUpPage()),
+                            ),
+                        child: Text(
+                          "Sign up",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold),
+                        )),
                   ),
                   SizedBox(
                     height: 20,

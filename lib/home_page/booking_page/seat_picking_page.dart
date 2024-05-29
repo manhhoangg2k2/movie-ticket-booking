@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:ticket_box/home_page/booking_page/payment_page.dart';
 import 'package:ticket_box/models/seat_data.dart';
 
 class SeatPicking extends StatefulWidget {
@@ -206,7 +207,12 @@ class _SeatPickingState extends State<SeatPicking> {
                     style: ButtonStyle(
                         backgroundColor:
                             MaterialStatePropertyAll(Colors.amber.shade400)),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => PaymentPage()),
+                      );
+                    },
                     child: Text(
                       "Buy Ticket",
                       style: TextStyle(

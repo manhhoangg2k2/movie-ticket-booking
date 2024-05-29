@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:ticket_box/home_page/booking_page/ticket_page.dart';
 
 class PaymentPage extends StatefulWidget {
   const PaymentPage({super.key});
@@ -10,6 +11,7 @@ class PaymentPage extends StatefulWidget {
 }
 
 class _PaymentPageState extends State<PaymentPage> {
+  int _currentChoose = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -157,23 +159,24 @@ class _PaymentPageState extends State<PaymentPage> {
                           ),
                         ),
                         ElevatedButton(
-                            style: ButtonStyle(
-                                minimumSize: WidgetStatePropertyAll(
-                                  Size(50.0, 54.0),
-                                ),
-                                shape: WidgetStatePropertyAll(
-                                  RoundedRectangleBorder(
-                                    borderRadius:
-                                        BorderRadius.circular(5.0), // Bo góc
-                                  ),
-                                ),
-                                backgroundColor: WidgetStatePropertyAll(
-                                    Colors.amber.shade400)),
-                            onPressed: () {},
-                            child: Text(
-                              "Apply",
-                              style: TextStyle(color: Colors.black),
-                            ))
+                          style: ButtonStyle(
+                            minimumSize:
+                                MaterialStateProperty.all(Size(50.0, 54.0)),
+                            shape: MaterialStateProperty.all(
+                              RoundedRectangleBorder(
+                                borderRadius:
+                                    BorderRadius.circular(5.0), // Bo góc
+                              ),
+                            ),
+                            backgroundColor: MaterialStateProperty.all(
+                                Colors.amber.shade400),
+                          ),
+                          onPressed: () {},
+                          child: Text(
+                            "Apply",
+                            style: TextStyle(color: Colors.black, fontSize: 16),
+                          ),
+                        )
                       ],
                     ),
                   ),
@@ -214,29 +217,63 @@ class _PaymentPageState extends State<PaymentPage> {
             ),
             Expanded(
                 child: ListView.separated(
-                    itemBuilder: (context, index) => Container(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: 20, vertical: 10),
-                          decoration: BoxDecoration(
-                              color: Color(0xff1c1c1c),
-                              borderRadius: BorderRadius.circular(10)),
-                          child: Row(
-                            children: [
-                              Icon(
-                                Icons.money,
-                                size: 35,
-                                color: Colors.white,
-                              ),
-                              SizedBox(
-                                width: 30,
-                              ),
-                              Text(
-                                "Cash",
-                                style: TextStyle(
-                                    color: Colors.white, fontSize: 20),
-                              )
-                            ],
-                          ),
+                    itemBuilder: (context, index) => InkWell(
+                          onTap: () {
+                            setState(() {
+                              _currentChoose = index;
+                            });
+                          },
+                          child: _currentChoose == index
+                              ? Container(
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: 20, vertical: 10),
+                                  decoration: BoxDecoration(
+                                      color: Color(0xff261d08),
+                                      borderRadius: BorderRadius.circular(10),
+                                      border: Border.all(
+                                          color: Colors.amber.shade300)),
+                                  child: Row(
+                                    children: [
+                                      Icon(
+                                        Icons.money,
+                                        size: 35,
+                                        color: Colors.white,
+                                      ),
+                                      SizedBox(
+                                        width: 30,
+                                      ),
+                                      Text(
+                                        "Cash",
+                                        style: TextStyle(
+                                            color: Colors.white, fontSize: 20),
+                                      )
+                                    ],
+                                  ),
+                                )
+                              : Container(
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: 20, vertical: 10),
+                                  decoration: BoxDecoration(
+                                      color: Color(0xff1c1c1c),
+                                      borderRadius: BorderRadius.circular(10)),
+                                  child: Row(
+                                    children: [
+                                      Icon(
+                                        Icons.money,
+                                        size: 35,
+                                        color: Colors.white,
+                                      ),
+                                      SizedBox(
+                                        width: 30,
+                                      ),
+                                      Text(
+                                        "Cash",
+                                        style: TextStyle(
+                                            color: Colors.white, fontSize: 20),
+                                      )
+                                    ],
+                                  ),
+                                ),
                         ),
                     separatorBuilder: (context, index) => SizedBox(
                           height: 10,
@@ -264,7 +301,12 @@ class _PaymentPageState extends State<PaymentPage> {
                           fontWeight: FontWeight.bold),
                     ),
                   ),
-                  onPressed: () {}),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => TicketPage()),
+                    );
+                  }),
             )
           ],
         ),

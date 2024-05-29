@@ -41,6 +41,7 @@ dependencies:
   flutter_svg: ^2.0.10+1
   carousel_slider: ^4.2.1
   easy_date_timeline: ^1.0.7
+  dotted_line: ^3.2.2
 
 dev_dependencies:
   flutter_test:
